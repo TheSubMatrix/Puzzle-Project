@@ -1,0 +1,16 @@
+{
+    "name": "PuzzleProject.Core.Board",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fd6a2c9049b8585459797568f52475b2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
