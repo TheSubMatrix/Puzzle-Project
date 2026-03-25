@@ -5,6 +5,7 @@ public class PuzzleBoard : MonoBehaviour
 {
     [SerializeField] uint m_width;
     [SerializeField] uint m_height;
+    [SerializeField] Vector2 m_tileSize;
     [SerializeField] List<TileObject> m_tilePrefabs;
     Grid2D<GridTile<TileObject>> m_grid;
     void Start()
@@ -14,7 +15,8 @@ public class PuzzleBoard : MonoBehaviour
         {
             for (int j = 0; j < m_grid.Height; j++)
             {
-                m_grid[i, j] = new(m_tilePrefabs[Random.Range(0, m_tilePrefabs.Count)], m_grid, i, j);
+                TileObject newTile = Instantiate(m_tilePrefabs[Random.Range(0, m_tilePrefabs.Count)], m_grid.GetCellPosition(new(i, j)), Quaternion.identity);
+                m_grid[i, j] = new(newTile, m_grid, i, j);
             }
         }
     }
