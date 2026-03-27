@@ -18,7 +18,7 @@ public class Grid2D<T>
     public Vector2 Origin { get; private set; }
     readonly T[,] m_grid;
     public Vector2 GetCellPosition(Vector2Int cell) => Origin + new Vector2(cell.x, cell.y) * m_cellSize;
-    public Vector2 GetCellCenter(Vector2Int cell) => new(cell.x * m_cellSize + (m_cellSize * 0.5f), cell.y * m_cellSize + (m_cellSize * 0.5f));
+    public Vector2 GetCellCenter(Vector2Int cell) => Origin + new Vector2(cell.x * m_cellSize + (m_cellSize * 0.5f), cell.y * m_cellSize + (m_cellSize * 0.5f));
     public Vector2Int GetCellAtPosition(Vector2 worldPosition)
     {
         Vector2 gridPosition = (worldPosition - Origin) / m_cellSize;

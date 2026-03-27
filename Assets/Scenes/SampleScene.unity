@@ -423,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: PuzzleProject.Core.Board::PuzzleBoard
   m_width: 5
   m_height: 5
+  m_cellSize: 1.5
   m_tilePrefabs:
   - {fileID: -2663410793454834761, guid: 64eb34909448f18478ccebb9369690bc, type: 3}
 --- !u!4 &1151114281

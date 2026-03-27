@@ -104,3 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc83972225d4b90bd2c65cfe3f5809e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PuzzleProject.Core.Board::TileObject
+  m_guid:
+    Part1: 2909354849
+    Part2: 1085483967
+    Part3: 2674402459
+    Part4: 2589190362
