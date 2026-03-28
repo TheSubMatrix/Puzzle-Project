@@ -13,9 +13,9 @@ public class PuzzleBoard : MonoBehaviour
     void Start()
     {
         m_grid = new(m_width, m_height, m_cellSize, new(-m_width * m_cellSize * 0.5f, -m_height * m_cellSize * 0.5f));
-        SpawnTilesFromData(m_spawnHandler.ProcessBoardState(m_grid));
+        UpdateTileData(m_spawnHandler.ProcessBoardState(m_grid));
     }
-    void SpawnTilesFromData(List<BoardStateData<TileObject>> spawnData)
+    void UpdateTileData(List<BoardStateData<TileObject>> spawnData)
     {
         foreach (BoardStateData<TileObject> data in spawnData)
         {
