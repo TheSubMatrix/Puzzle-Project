@@ -5,7 +5,7 @@ using UnityEngine;
 public class SerializableGrid<T> : ISerializationCallbackReceiver
 {
     public T[,] Value;
-
+    public T this[int row, int col] => Value[row, col];
     [field:SerializeField] public int Rows { get; private set; }
     [field:SerializeField] public int Columns{ get; private set;}
     [SerializeField] T[] m_flatData;

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Grid2D<T>
+public class Grid2D<T> : IEquatable<T[,]>
 {
     public Grid2D(uint width, uint height, float cellSize, Vector2 origin)
     {
@@ -17,7 +17,6 @@ public class Grid2D<T>
     readonly float m_cellSize;
     public Vector2 Origin { get; private set; }
     readonly T[,] m_grid;
-    public Vector2 GetCellPosition(Vector2Int cell) => Origin + new Vector2(cell.x, cell.y) * m_cellSize;
     public Vector2 GetCellCenter(Vector2Int cell) => Origin + new Vector2(cell.x * m_cellSize + (m_cellSize * 0.5f), cell.y * m_cellSize + (m_cellSize * 0.5f));
     public Vector2Int GetCellAtPosition(Vector2 worldPosition)
     {
@@ -40,5 +39,9 @@ public class Grid2D<T>
             m_grid[x, y] = value;
             OnCellChanged(x, y, value);
         }
+    }
+    public bool Equals(T[,] other)
+    {
+        return other == m_grid;
     }
 }

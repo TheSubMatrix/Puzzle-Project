@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a357e04089466e14db490bd683623ec8, type: 3}
+  m_Name: Solution
+  m_EditorClassIdentifier: PuzzleProject.Core::SolutionSO
+  <Grid>k__BackingField:
+    <Rows>k__BackingField: 4
+    <Columns>k__BackingField: 4
+    m_flatData:
+    - {fileID: 5296320021325761648, guid: 9985294737224be48a095952471a9fc1, type: 3}
+    - {fileID: 6275941125002864248, guid: bd7c8ede12da18844891a9473a268eed, type: 3}
+    - {fileID: 4865785777845307439, guid: 787e3c14bf1de154da1f194eb6ef1d17, type: 3}
+    - {fileID: 0}
+    - {fileID: 1558224579654145421, guid: ce28758572494eb42a29d7fb555d34ee, type: 3}
+    - {fileID: 2505205142070959685, guid: fdb6ee10f1dde434bac7ef17309a9cbb, type: 3}
+    - {fileID: 6333535072729682484, guid: 589b8e9f2bd2e6f498f4de09c619034f, type: 3}
+    - {fileID: 3292729240097839648, guid: 57264da7c076a6a4da037bcb0cec8195, type: 3}
+    - {fileID: 4854025796372569780, guid: 367408346dbc00b4cb84b682dbd9c04c, type: 3}
+    - {fileID: 3056253946346733858, guid: 8255f187b87625e4bb80e43b27c939e7, type: 3}
+    - {fileID: 574018378969244966, guid: 447af915c1b9d714397dcaff76bfa8b7, type: 3}
+    - {fileID: 2663714487205435023, guid: 30b86370a671d7f45beded668e7403a6, type: 3}
+    - {fileID: 8399748628088753178, guid: b21530d10f9f20d489ddc8cf55c43558, type: 3}
+    - {fileID: 4966352203312981317, guid: 00153186751d2784eb9bbfe386b2d3b5, type: 3}
+    - {fileID: 4006090218236218584, guid: d3b23bfc1c25dd74db35629dbe5fd181, type: 3}
+    - {fileID: 7491475344114188435, guid: 6f59398ada4967e4a9182d46324527d1, type: 3}
+    m_prevRows: 4
+    m_prevCols: 4

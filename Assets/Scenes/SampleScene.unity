@@ -401,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151114281}
-  - component: {fileID: 1151114280}
+  - component: {fileID: 1151114282}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -409,42 +409,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1151114280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151114279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603e59161db727e47bd8f112d0c44821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: PuzzleProject.Core.Board::PuzzleBoard
-  m_width: 8
-  m_height: 8
-  m_cellSize: 1.5
-  m_spawnHandler:
-    rid: 7222762886255345740
-  m_moveHandler:
-    rid: -2
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 7222762886255345740
-      type: {class: SpawnHandler, ns: , asm: PuzzleProject.Core.Board}
-      data:
-        <SpawnOptions>k__BackingField:
-          m_list:
-          - {fileID: 8493699191307836192, guid: 766e43ea40ba4a947ad40b06ce084298, type: 3}
-          - {fileID: 2058856111686991921, guid: cdad8a4a54e81e5438dbd859b8526553, type: 3}
-          - {fileID: 7758255419583511806, guid: 964695eb469c636449511539efb897e4, type: 3}
-          - {fileID: 2073781810271439656, guid: 888f1d3081949e140a1f4ea9696830d6, type: 3}
-          - {fileID: 431107730201919821, guid: 768c72212fa97c643a149441f4a2340c, type: 3}
-          - {fileID: -2663410793454834761, guid: 64eb34909448f18478ccebb9369690bc, type: 3}
-          m_stagingValue: {fileID: -2663410793454834761, guid: 64eb34909448f18478ccebb9369690bc, type: 3}
 --- !u!4 &1151114281
 Transform:
   m_ObjectHideFlags: 0
@@ -460,6 +424,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151114282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151114279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf27c7a3775df747800c6e63af69488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PuzzleProject.Core::PuzzleBoard
+  m_solution: {fileID: 11400000, guid: 8c4759d88b86b85489b90bceeb2660fd, type: 2}
+  m_shuffleMoveTotal: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
