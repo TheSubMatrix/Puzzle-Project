@@ -10,7 +10,7 @@ public class PuzzleBoard : MonoBehaviour
     Vector2Int m_emptyCell;
     IEnumerator Start()
     {
-        m_grid = new((uint)m_solution.Grid.Columns, (uint)m_solution.Grid.Rows, 1f, Vector2.zero);
+        m_grid = new((uint)m_solution.Grid.Columns, (uint)m_solution.Grid.Rows, 1f, new(transform.position.x - m_solution.Grid.Columns * 0.5f,transform.position.y - m_solution.Grid.Rows * 0.5f));
         for (int x = 0; x < m_grid.Width; x++)
         {
             for (int y = 0; y < m_grid.Height; y++)

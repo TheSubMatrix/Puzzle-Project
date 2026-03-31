@@ -225,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: PuzzleProject.Core::PuzzleBoard
   m_solution: {fileID: 11400000, guid: 8c4759d88b86b85489b90bceeb2660fd, type: 2}
-  m_shuffleMoveTotal: 0
+  m_shuffleMoveTotal: 300
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
