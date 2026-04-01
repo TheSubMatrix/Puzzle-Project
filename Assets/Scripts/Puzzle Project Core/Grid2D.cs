@@ -17,14 +17,13 @@ public class Grid2D<T> : IEquatable<T[,]>
     readonly float m_cellSize;
     public Vector2 Origin { get; private set; }
     readonly T[,] m_grid;
-    public Vector2 GetCellCenter(Vector2Int cell) => Origin + new Vector2(cell.x * m_cellSize + (m_cellSize * 0.5f), cell.y * m_cellSize + (m_cellSize * 0.5f));
-    public Vector2Int GetCellAtPosition(Vector2 worldPosition)
+    public Vector2 GetCellCenter(Vector2Int cell) => Origin + new Vector2(cell.x * m_cellSize + (m_cellSize * 0.5f), cell.y * m_cellSize + (m_cellSize * 0.5f));public Vector2Int GetCellAtPosition(Vector2 worldPosition)
     {
-        Vector2 gridPosition = (worldPosition - Origin) / m_cellSize;
-        return new(Mathf.FloorToInt(gridPosition.x), Mathf.FloorToInt(gridPosition.y));
+        Vector2 gridPosition = (worldPosition - Origin - new Vector2(m_cellSize * 0.5f, m_cellSize * 0.5f)) / m_cellSize;
+        return new(Mathf.RoundToInt(gridPosition.x), Mathf.RoundToInt(gridPosition.y));
     }
-    bool IsValid(Vector2Int cell) => cell is { x: >= 0, y: >= 0 } && cell.x < Width && cell.y < Height;
-    bool IsValid(int x, int y) => x >= 0 && x < Width && y >= 0 && y < Height;
+    public bool IsValid(Vector2Int cell) => cell is { x: >= 0, y: >= 0 } && cell.x < Width && cell.y < Height;
+    public bool IsValid(int x, int y) => x >= 0 && x < Width && y >= 0 && y < Height;
     public T this[Vector2Int position]
     {
         get => this[position.x, position.y];

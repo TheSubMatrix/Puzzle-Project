@@ -23,14 +23,16 @@ public class InputHandler : MonoBehaviour
 
     void OnTouchEnded(Finger finger)
     {
+        if(Camera.main is null) return;
+        Vector2 worldStart = Camera.main.ScreenToWorldPoint(finger.currentTouch.startScreenPosition);
+        Vector2 worldEnd = Camera.main.ScreenToWorldPoint(finger.currentTouch.screenPosition);
         if (finger.currentTouch.isTap)
         {
-            OnTap?.Invoke(finger.currentTouch.startScreenPosition);
+            OnTap?.Invoke(worldEnd);
             return;
         }
-        if(Vector2.Distance(finger.currentTouch.startScreenPosition, finger.currentTouch.screenPosition) < m_swipeThreshold) return;
-        if (finger.currentTouch.time > m_swipeTimeOut) return;
-        OnSwipe?.Invoke(finger.currentTouch.startScreenPosition, finger.currentTouch.screenPosition);
+        if(Vector2.Distance(worldStart, worldEnd) < m_swipeThreshold) return;
+        OnSwipe?.Invoke(worldStart, worldEnd);
         
     }
 }
