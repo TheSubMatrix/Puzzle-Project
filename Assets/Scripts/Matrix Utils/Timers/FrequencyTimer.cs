@@ -53,7 +53,7 @@
             return this;
         }
 
-        public override void ResetState()
+        protected override void ResetState()
         {
             base.ResetState();
             OnTimerTick = delegate { };

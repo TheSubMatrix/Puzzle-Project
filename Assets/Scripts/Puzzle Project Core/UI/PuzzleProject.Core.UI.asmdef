@@ -1,0 +1,19 @@
+{
+    "name": "PuzzleProject.Core.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fd6a2c9049b8585459797568f52475b2",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:b4c962f31fdffab41b8fea1824b0d879",
+        "GUID:f6a0da6c76f2acf47af6e835216b3f47"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

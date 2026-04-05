@@ -42,7 +42,7 @@ namespace MatrixUtils.Timers
             Stop();
         }
 
-        public override void ResetState()
+        protected override void ResetState()
         {
 	        base.ResetState();
 	        OnTimerInterval = delegate { };

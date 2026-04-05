@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PuzzleBoard : MonoBehaviour
 {
     [SerializeField] SolutionSO m_solution;
     [SerializeField] uint m_shuffleMoveTotal;
+    [SerializeField] float m_shuffleTime;
+    [SerializeField] UnityEvent m_onPuzzleSolved = new();
+    [SerializeField] UnityEvent m_onPuzzleStarted = new();
+    [SerializeField] List<Sprite> m_puzzleSprites = new();
     Grid2D<GridTile<PuzzlePiece>> m_grid;
     Vector2Int m_emptyCell;
     bool m_isMoving;
-    void Start()
+    bool UseAlternativeSprite => m_puzzleSprites.Count > 0;
+    IEnumerator Start()
     {
-        m_grid = new((uint)m_solution.Grid.Columns, (uint)m_solution.Grid.Rows, 1f, new(transform.position.x - m_solution.Grid.Columns * 0.5f,transform.position.y - m_solution.Grid.Rows * 0.5f));
+        Sprite spriteToUse = m_puzzleSprites[Random.Range(0, m_puzzleSprites.Count)];
+        m_grid = new((uint)m_solution.Grid.Columns,
+            (uint)m_solution.Grid.Rows,
+            1f,
+            new(transform.position.x - m_solution.Grid.Columns * 0.5f,
+                transform.position.y - m_solution.Grid.Rows * 0.5f));
         for (int x = 0; x < m_grid.Width; x++)
         {
             for (int y = 0; y < m_grid.Height; y++)
@@ -25,6 +36,8 @@ public class PuzzleBoard : MonoBehaviour
                 }
                 m_grid[x, y] = new(Instantiate(m_solution.Grid[row, x]), m_grid, x, y);
                 m_grid[x, y].Value.transform.position = m_grid.GetCellCenter(new(x, y));
+                if (!UseAlternativeSprite) continue;
+                m_grid[x,y].Value.GetComponent<SpriteRenderer>().sprite = spriteToUse;
             }
         }
         Vector2Int? lastNeighborPos = null;
@@ -39,10 +52,11 @@ public class PuzzleBoard : MonoBehaviour
             m_grid[m_emptyCell] = selectedNeighbor;
             m_grid[neighborOldPos] = null;
             selectedNeighbor.Position = m_emptyCell;
-            selectedNeighbor.Value.transform.position = m_grid.GetCellCenter(m_emptyCell);
+            yield return MoveTo(selectedNeighbor, m_emptyCell, m_shuffleTime / m_shuffleMoveTotal);
             lastNeighborPos = m_emptyCell;
             m_emptyCell = neighborOldPos;
         }
+        m_onPuzzleStarted.Invoke();
     }
     List<GridTile<PuzzlePiece>> GetCellNeighbors(int x, int y, bool filterEmpty = true)
     {
@@ -85,7 +99,7 @@ public class PuzzleBoard : MonoBehaviour
         m_emptyCell = cellToMoveTo;
         StartCoroutine(MoveTo(m_grid[cellToMoveTo], m_emptyCell, 0.25f));
         m_emptyCell = desiredCell;
-        if(CheckWin()) Debug.Log("You Win!");
+        if(CheckWin()) OnPuzzleSolved();
     }
     bool CheckWin()
     {
@@ -102,5 +116,10 @@ public class PuzzleBoard : MonoBehaviour
             }
         }
         return true;
+    }
+
+    void OnPuzzleSolved()
+    {
+        m_onPuzzleSolved.Invoke();
     }
 }

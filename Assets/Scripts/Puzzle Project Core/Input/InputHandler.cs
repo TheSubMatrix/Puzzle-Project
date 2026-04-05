@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.Serialization;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 public class InputHandler : MonoBehaviour
 {
@@ -10,16 +8,6 @@ public class InputHandler : MonoBehaviour
     [SerializeField] float m_swipeTimeOut = 1f;
     public UnityEvent<Vector2> OnTap;
     public UnityEvent<Vector2, Vector2> OnSwipe;
-    void OnEnable()
-    {
-        EnhancedTouchSupport.Enable();
-        Touch.onFingerUp += OnTouchEnded;
-    }
-    void OnDisable()
-    {
-        Touch.onFingerUp -= OnTouchEnded;
-        EnhancedTouchSupport.Disable();
-    }
 
     void OnTouchEnded(Finger finger)
     {
@@ -34,5 +22,17 @@ public class InputHandler : MonoBehaviour
         if(Vector2.Distance(worldStart, worldEnd) < m_swipeThreshold) return;
         OnSwipe?.Invoke(worldStart, worldEnd);
         
+    }
+
+    public void DisableInput()
+    {
+        Touch.onFingerUp -= OnTouchEnded;
+        EnhancedTouchSupport.Disable();
+    }
+
+    public void EnableInput()
+    {
+        EnhancedTouchSupport.Enable();
+        Touch.onFingerUp += OnTouchEnded;
     }
 }

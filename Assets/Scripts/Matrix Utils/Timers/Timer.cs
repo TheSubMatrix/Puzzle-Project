@@ -5,16 +5,26 @@
     public abstract class Timer<T> : ITimer, IDisposable where T : Timer<T>
     {
         bool m_disposed;
-        public float CurrentTime { get; protected set; }
+        float m_time;
+        public float CurrentTime
+        {
+            get => m_time;
+            protected set
+            {
+                m_time = value;
+                if (IsRunning) m_onTimeUpdated.Invoke(value);
+            }
+        }
+
         public bool IsRunning { get; private set; }
         protected float InitialTime = 0;
         public float Progress => Mathf.Clamp01(CurrentTime / InitialTime);
-        public bool UseUnscaledTime { get; set; }
-
-        public Action OnTimerStart = delegate { };
-        public Action OnTimerStop = delegate { };
-        public Action OnTimerPause = delegate { };
-        public Action OnTimerResume = delegate { };
+        bool UseUnscaledTime { get; set; }
+        Action<float> m_onTimeUpdated = delegate { };
+        Action m_onTimerStart = delegate { };
+        Action m_onTimerStop = delegate { };
+        Action m_onTimerPause = delegate { };
+        Action m_onTimerResume = delegate { };
 
         public void Start()
         {
@@ -22,7 +32,7 @@
             if (IsRunning) return;
             IsRunning = true;
             TimerManager.RegisterTimer(this);
-            OnTimerStart.Invoke();
+            m_onTimerStart.Invoke();
         }
 
         public void Stop()
@@ -30,7 +40,7 @@
             if (!IsRunning) return;
             IsRunning = false;
             TimerManager.DeregisterTimer(this);
-            OnTimerStop.Invoke();
+            m_onTimerStop.Invoke();
         }
 
         public abstract void Tick();
@@ -40,13 +50,13 @@
         public void Resume()
         {
             IsRunning = true;
-            OnTimerResume.Invoke();
+            m_onTimerResume.Invoke();
         }
 
         public void Pause()
         {
             IsRunning = false;
-            OnTimerPause.Invoke();
+            m_onTimerPause.Invoke();
         }
 
         public virtual void Reset() => CurrentTime = InitialTime;
@@ -67,7 +77,7 @@
         /// </summary>
         public T OnStart(Action callback)
         {
-            OnTimerStart += callback;
+            m_onTimerStart += callback;
             return this as T;
         }
 
@@ -76,7 +86,7 @@
         /// </summary>
         public T OnComplete(Action callback)
         {
-            OnTimerStop += callback;
+            m_onTimerStop += callback;
             return this as T;
         }
 
@@ -85,7 +95,7 @@
         /// </summary>
         public T OnPause(Action callback)
         {
-            OnTimerPause += callback;
+            m_onTimerPause += callback;
             return this as T;
         }
 
@@ -94,7 +104,7 @@
         /// </summary>
         public T OnResume(Action callback)
         {
-            OnTimerResume += callback;
+            m_onTimerResume += callback;
             return this as T;
         }
 
@@ -107,16 +117,22 @@
             return this as T;
         }
 
+        public T OnTimeUpdated(Action<float> callback)
+        {
+            m_onTimeUpdated += callback;
+            return this as T;
+        }
+        
         /// <summary>
         /// Resets the timer to its default state, clearing all callbacks and settings
         /// </summary>
-        public virtual void ResetState()
+        protected virtual void ResetState()
         {
             Stop();
-            OnTimerStart = delegate { };
-            OnTimerStop = delegate { };
-            OnTimerPause = delegate { };
-            OnTimerResume = delegate { };
+            m_onTimerStart = delegate { };
+            m_onTimerStop = delegate { };
+            m_onTimerPause = delegate { };
+            m_onTimerResume = delegate { };
             UseUnscaledTime = false;
         }
 
