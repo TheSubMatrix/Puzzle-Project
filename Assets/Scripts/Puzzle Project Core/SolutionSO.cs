@@ -5,4 +5,6 @@ using UnityEngine.Serialization;
 public class SolutionSO : ScriptableObject
 {
     [field:SerializeField]public SerializableGrid<PuzzlePiece> Grid{get; private set;}
+    [field:SerializeField]public Vector2Int MissingPiecePosition{get; private set;}
+    [field:SerializeField]public PuzzlePiece MissingPiece{get; private set;}
 }

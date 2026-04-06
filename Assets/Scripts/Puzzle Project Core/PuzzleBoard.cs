@@ -10,14 +10,15 @@ public class PuzzleBoard : MonoBehaviour
     [SerializeField] float m_shuffleTime;
     [SerializeField] UnityEvent m_onPuzzleSolved = new();
     [SerializeField] UnityEvent m_onPuzzleStarted = new();
+    [SerializeField] UnityEvent<Sprite> m_onPuzzleImageSelected = new();
     [SerializeField] List<Sprite> m_puzzleSprites = new();
     Grid2D<GridTile<PuzzlePiece>> m_grid;
     Vector2Int m_emptyCell;
     bool m_isMoving;
-    bool UseAlternativeSprite => m_puzzleSprites.Count > 0;
     IEnumerator Start()
     {
         Sprite spriteToUse = m_puzzleSprites[Random.Range(0, m_puzzleSprites.Count)];
+        m_onPuzzleImageSelected.Invoke(spriteToUse);
         m_grid = new((uint)m_solution.Grid.Columns,
             (uint)m_solution.Grid.Rows,
             1f,
@@ -36,7 +37,6 @@ public class PuzzleBoard : MonoBehaviour
                 }
                 m_grid[x, y] = new(Instantiate(m_solution.Grid[row, x]), m_grid, x, y);
                 m_grid[x, y].Value.transform.position = m_grid.GetCellCenter(new(x, y));
-                if (!UseAlternativeSprite) continue;
                 m_grid[x,y].Value.GetComponent<SpriteRenderer>().sprite = spriteToUse;
             }
         }

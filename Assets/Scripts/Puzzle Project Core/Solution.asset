@@ -34,3 +34,5 @@ MonoBehaviour:
     - {fileID: 7491475344114188435, guid: 6f59398ada4967e4a9182d46324527d1, type: 3}
     m_prevRows: 4
     m_prevCols: 4
+  <MissingPiecePosition>k__BackingField: {x: 3, y: 0}
+  <MissingPiece>k__BackingField: {fileID: 149530769251292840, guid: db6bb3aff97554248bb5a49703da07b1, type: 3}
