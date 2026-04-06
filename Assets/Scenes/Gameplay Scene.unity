@@ -1537,8 +1537,48 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_puzzleSprites:
-  - {fileID: 21300000, guid: 07902128dee839e4c908e6d7f387d7ad, type: 3}
+  - {fileID: 21300000, guid: e093c447a1c776f43bcc14ca59383b89, type: 3}
+  - {fileID: 21300000, guid: 28e08c45b4a582c47b8de9f0f8e0ca7b, type: 3}
+  - {fileID: 3111368235685862023, guid: 9b15c42b3d8d7fb48b7ad7ef97b3b183, type: 3}
+  - {fileID: 21300000, guid: 5d2042c286e545a43a75e3abea9df8ab, type: 3}
+  - {fileID: 21300000, guid: 3fc0829f74ed79c4db3920e14dbaa09a, type: 3}
   - {fileID: 21300000, guid: 2c90d492dba84184a86d91ffc2738242, type: 3}
+  m_slideSoundData:
+    Clip: {fileID: 8300000, guid: b743ccca0d3f5c344946e77ea425777c, type: 3}
+    MixerGroup: {fileID: 0}
+    Loop: 0
+    PlayOnAwake: 0
+    PlayedFrequently: 0
+    Volume: 1
+    Pitch: 1
+    PanStereo: 0
+    SpatialBlend: 0
+    ReverbZoneMix: 1
+    DopplerLevel: 1
+    Spread: 0
+    MinDistance: 1
+    MaxDistance: 500
+    IgnoreListenerVolume: 0
+    IgnoreListenerPause: 0
+    RolloffMode: 0
+  m_winSoundData:
+    Clip: {fileID: 8300000, guid: f0800d509e41a1d419ed348b81daa725, type: 3}
+    MixerGroup: {fileID: 0}
+    Loop: 0
+    PlayOnAwake: 0
+    PlayedFrequently: 0
+    Volume: 1
+    Pitch: 1
+    PanStereo: 0
+    SpatialBlend: 0
+    ReverbZoneMix: 1
+    DopplerLevel: 1
+    Spread: 0
+    MinDistance: 1
+    MaxDistance: 500
+    IgnoreListenerVolume: 0
+    IgnoreListenerPause: 0
+    RolloffMode: 0
 --- !u!1 &1274121590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2097,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3167d93f602d02045bab7ebf46c564a2, type: 3}
+--- !u!1001 &7765654914435355111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2744099908515513862, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569115107789837368, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09ebdb58003cc3043b6007a80cfe6d12, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2070,3 +2167,4 @@ SceneRoots:
   - {fileID: 479471844}
   - {fileID: 448714331}
   - {fileID: 7347239310325832246}
+  - {fileID: 7765654914435355111}

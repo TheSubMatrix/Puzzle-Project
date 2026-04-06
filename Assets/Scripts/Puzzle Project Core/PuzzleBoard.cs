@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AudioSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,8 @@ public class PuzzleBoard : MonoBehaviour
     [SerializeField] UnityEvent m_onPuzzleStarted = new();
     [SerializeField] UnityEvent<Sprite> m_onPuzzleImageSelected = new();
     [SerializeField] List<Sprite> m_puzzleSprites = new();
+    [SerializeField] SoundData m_slideSoundData; 
+    [SerializeField] SoundData m_winSoundData; 
     Grid2D<GridTile<PuzzlePiece>> m_grid;
     Vector2Int m_emptyCell;
     bool m_isMoving;
@@ -93,6 +96,7 @@ public class PuzzleBoard : MonoBehaviour
         Vector2Int cellToMoveTo = m_grid.GetCellAtPosition(tileToMoveTo);
         if (!m_grid.IsValid(desiredCell) || cellToMoveTo != m_emptyCell) return;
         if (!GetCellNeighbors(cellToMoveTo.x, cellToMoveTo.y, false).Contains(m_grid[desiredCell])) return;
+        SoundManager.Instance.CreateSound().WithSoundData(m_slideSoundData).WithRandomPitch().Play();
         GridTile<PuzzlePiece> pieceToMove = m_grid[desiredCell];
         m_grid[m_emptyCell] = pieceToMove;
         m_grid[desiredCell] = null;
@@ -120,6 +124,7 @@ public class PuzzleBoard : MonoBehaviour
 
     void OnPuzzleSolved()
     {
+        SoundManager.Instance.CreateSound().WithSoundData(m_winSoundData).WithRandomPitch().Play();
         m_onPuzzleSolved.Invoke();
     }
 }
